@@ -9,9 +9,10 @@
     <div id="scanner-container"></div>
     <input type="button" id="btn" value="Start/Stop the scanner" />
 
-
+    <h1 id='result'></h1>
     <script>
         var _scannerIsRunning = false;
+        var resultadoHtml = document.getElementById('result')
         function startScanner() {
             Quagga.init({
                 inputStream: {
@@ -92,6 +93,7 @@
 
             Quagga.onDetected(function (result) {
                 console.log("Barcode detected and processed : [" + result.codeResult.code + "]", result);
+                resultadoHtml.textContent = "Barcode detected and processed : [" + result.codeResult.code + "]" + result
             });
         }
 
